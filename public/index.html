@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="My Notifications">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <title>My Notifications</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="app-icon" aria-hidden="true">♢</div>
+      <div><p class="eyebrow">YOUR PERSONAL PUSH APP</p><h1>My Notifications</h1></div>
+    </header>
+
+    <section class="panel">
+      <div class="panel-heading"><h2>This device</h2><span id="statusPill" class="pill">Not enabled</span></div>
+      <p class="muted">Register this phone to receive notifications sent from any device using your sender secret.</p>
+      <button id="enableBtn" class="primary">Enable notifications</button>
+      <p id="deviceStatus" class="status" role="status">Checking setup…</p>
+    </section>
+
+    <section class="panel">
+      <h2>Send notification</h2>
+      <p class="muted">Send a push notification to every registered device.</p>
+      <form id="sendForm">
+        <label for="secret">Private sender secret</label>
+        <input id="secret" type="password" autocomplete="off" placeholder="Enter your sender secret" required minlength="32">
+        <label for="title">Notification title</label>
+        <input id="title" maxlength="100" value="My Notifications" required>
+        <label for="message">Message</label>
+        <textarea id="message" maxlength="500" rows="3" placeholder="What should the notification say?" required></textarea>
+        <label for="targetUrl">Open this URL when tapped (optional)</label>
+        <input id="targetUrl" type="url" placeholder="https://example.com">
+        <button id="sendBtn" class="primary" type="submit">Send to registered devices</button>
+        <p id="sendStatus" class="status" role="status"></p>
+      </form>
+    </section>
+
+    <footer>Requires internet access and notification permission. Keep your sender secret private.</footer>
+  </main>
+  <script src="/firebase-config.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-functions-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "my-notifications",
+  "private": true,
+  "scripts": {
+    "deploy": "firebase deploy",
+    "serve": "firebase emulators:start"
+  }
+}
